@@ -17,14 +17,14 @@ public class JavaWebDeployInfo {
     }
 
     public int getType() {
-		return type;
-	}
+        return type;
+    }
 
-	public void setType(int type) {
-		this.type = type;
-	}
+    public void setType(int type) {
+        this.type = type;
+    }
 
-	public void setUuid(String uuid) {
+    public void setUuid(String uuid) {
         this.uuid = uuid;
     }
 

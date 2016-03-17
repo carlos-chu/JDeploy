@@ -13,29 +13,29 @@ import java.io.IOException;
  */
 public class ShellUtil {
 
-	public static String exec(String... cmd) throws IOException {
-		
-		CommandLine cmdLine = CommandLine.parse(cmd[0]);
-		for(int i = 1; i < cmd.length; i++) {
-			cmdLine.addArgument(cmd[i], false);
-		}
-		
-		DefaultExecutor executor = new DefaultExecutor();
+    public static String exec(String... cmd) throws IOException {
 
-		// 防止抛出异常
-		executor.setExitValues(null);
+        CommandLine cmdLine = CommandLine.parse(cmd[0]);
+        for (int i = 1; i < cmd.length; i++) {
+            cmdLine.addArgument(cmd[i], false);
+        }
 
-		// 命令执行的超时时间
-		ExecuteWatchdog watchdog = new ExecuteWatchdog(600000);
-		executor.setWatchdog(watchdog);
+        DefaultExecutor executor = new DefaultExecutor();
 
-		ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-		PumpStreamHandler streamHandler = new PumpStreamHandler(outputStream);
-		executor.setStreamHandler(streamHandler);
+        // 防止抛出异常
+        executor.setExitValues(null);
 
-		executor.execute(cmdLine);
+        // 命令执行的超时时间
+        ExecuteWatchdog watchdog = new ExecuteWatchdog(600000);
+        executor.setWatchdog(watchdog);
 
-		return outputStream.toString();
-	}
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        PumpStreamHandler streamHandler = new PumpStreamHandler(outputStream);
+        executor.setStreamHandler(streamHandler);
+
+        executor.execute(cmdLine);
+
+        return outputStream.toString();
+    }
 
 }

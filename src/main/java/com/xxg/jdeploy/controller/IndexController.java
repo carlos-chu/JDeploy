@@ -21,7 +21,7 @@ public class IndexController {
 
     @Autowired
     private JavaWebDeployService javaWebDeployService;
-    
+
     @Value("${modules}")
     private String modules;
 
@@ -33,11 +33,11 @@ public class IndexController {
         ModelAndView mv = new ModelAndView("index");
         List<String> moduleList = Arrays.asList(modules.split(","));
         mv.addObject("moduleList", moduleList);
-        if(moduleList.contains("java")) {
-        	mv.addObject("javaDeployList", javaDeployService.getList());
+        if (moduleList.contains("java")) {
+            mv.addObject("javaDeployList", javaDeployService.getList());
         }
-        if(moduleList.contains("javaweb")) {
-        	mv.addObject("javaWebDeployList", javaWebDeployService.getList());
+        if (moduleList.contains("javaweb")) {
+            mv.addObject("javaWebDeployList", javaWebDeployService.getList());
         }
         return mv;
     }
